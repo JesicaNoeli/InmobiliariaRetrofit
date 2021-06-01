@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/fotoGrande"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/grande"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[3]" />
+
+    <TextView
+        android:id="@+id/textDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fotoGrande" />
+
+    <TextView
+        android:id="@+id/textTipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textInquilino"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTipo" />
+
+    <Switch
+        android:id="@+id/switchDisponible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/disponible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPrecio1" />
+
+    <TextView
+        android:id="@+id/textDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Direccion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDireccion" />
+
+    <TextView
+        android:id="@+id/tvDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/direccion2"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTipo" />
+
+    <TextView
+        android:id="@+id/textPrecio1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/precio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrecio" />
+
+    <TextView
+        android:id="@+id/tvTipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:text="@string/tipo2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDescripcion" />
+
+    <TextView
+        android:id="@+id/tvPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/precio2"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="@+id/textDireccion"
+        app:layout_constraintTop_toBottomOf="@+id/textDireccion" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

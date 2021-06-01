@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textDni"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:text="@string/dni" />
+
+    <TextView
+        android:id="@+id/editDni"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview4" />
+
+    <TextView
+        android:id="@+id/textapellido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:text="@string/apellido" />
+
+    <TextView
+        android:id="@+id/editApellido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview7"
+       />
+
+    <TextView
+        android:id="@+id/textNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:text="@string/nombre" />
+
+    <TextView
+        android:id="@+id/editNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview0" />
+
+    <TextView
+        android:id="@+id/textDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:text="@string/direccion" />
+
+    <TextView
+        android:id="@+id/editDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview5" />
+
+    <TextView
+        android:id="@+id/textTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:text="@string/telefono" />
+
+    <TextView
+        android:id="@+id/editTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview6"
+       />
+
+    <TextView
+        android:id="@+id/tvSeparador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        />
+</LinearLayout>

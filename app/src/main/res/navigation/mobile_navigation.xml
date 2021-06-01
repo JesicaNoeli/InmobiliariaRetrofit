@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_inmueble">
+
+    <fragment
+        android:id="@+id/nav_inmueble"
+        android:name="com.example.tp_final_inmobiliaria.ui.inmuebles.InmueblesFragment"
+        android:label="@string/menu_inmuebles"
+        tools:layout="@layout/fragment_inmueble" />
+
+    <fragment
+        android:id="@+id/nav_inquilino"
+        android:name="com.example.tp_final_inmobiliaria.ui.Inquilinos.InquilinoFragment"
+        android:label="@string/menu_inquilinos"
+        tools:layout="@layout/fragment_inquilino" />
+
+    <fragment
+        android:id="@+id/nav_pagos"
+        android:name="com.example.tp_final_inmobiliaria.ui.pagos.PagosFragment"
+        android:label="@string/menu_pagos"
+        tools:layout="@layout/fragment_pagos" />
+
+    <fragment
+        android:id="@+id/nav_contratos"
+        android:name="com.example.tp_final_inmobiliaria.ui.contratos.ContratosFragment"
+        android:label="@string/menu_contratos"
+        tools:layout="@layout/fragment_contratos" />
+
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.example.tp_final_inmobiliaria.ui.perfil.PerfilFragment"
+        android:label="@string/menu_perfil"
+        tools:layout="@layout/fragment_perfil" />
+
+    <fragment
+        android:id="@+id/nav_salir"
+        android:name="com.example.tp_final_inmobiliaria.ui.salir.SalirFragment"
+        android:label="@string/menu_salir"
+        tools:layout="@layout/fragment_salir" />
+</navigation>

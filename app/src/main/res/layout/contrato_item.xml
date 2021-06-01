@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textInicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="@string/inicio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/editInicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInicio" />
+
+    <TextView
+        android:id="@+id/textFinalizacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="@string/finalizacion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editInicio" />
+
+    <TextView
+        android:id="@+id/editFinalizacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFinalizacion" />
+
+    <TextView
+        android:id="@+id/textPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="@string/precioC"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editFinalizacion" />
+
+    <TextView
+        android:id="@+id/editPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPrecio" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
