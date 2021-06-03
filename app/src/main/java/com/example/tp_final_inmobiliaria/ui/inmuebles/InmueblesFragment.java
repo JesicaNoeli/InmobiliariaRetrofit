@@ -3,6 +3,7 @@ package com.example.tp_final_inmobiliaria.ui.inmuebles;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 
 import com.example.tp_final_inmobiliaria.ui.NavigationActivity;
 import com.example.tp_final_inmobiliaria.R;
@@ -38,13 +40,16 @@ public class InmueblesFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
 
-        vm= ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InmueblesViewModel.class);
+        vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InmueblesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_inmueble, container, false);
+        context = root.getContext();
+
+
         final ListView lv = root.findViewById(R.id.listInmuebles);
 
         vm.getInmuebles().observe(getViewLifecycleOwner(), new Observer<List>() {
             @Override
-            public void onChanged(List list) {
+            public void onChanged(final List list) {
                 final ArrayAdapter<Inmueble> adapter = new InmuebleAdapter(getContext(), R.layout.inmueble_item,list, getLayoutInflater());
                 lv.setAdapter(adapter);
                 lv.setClickable(true);
@@ -53,30 +58,26 @@ public class InmueblesFragment extends Fragment {
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Bundle bundle = new Bundle();
                         Inmueble inmueble = adapter.getItem(i);
-                        int id= inmueble.getId();
-                        vm.verInmueble(id);
-                        vm.getInmueble().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
-                            @Override
-                            public void onChanged(Inmueble inmueble) {
-                                Intent intent = new Intent(getContext(), InmuebleActivity.class);
-                                intent.putExtra("inmueble", inmueble);
-                                startActivity(intent);
-
-                            }
-                        });
-
+                        // bundle.putSerializable("inmueble", inmueble);
+                        bundle.putInt("id",inmueble.getId());
+                        Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.verInmuebleFragment, bundle);
                     }
                 });
 
             }
         });
-      vm.cargarInmuebles();
+
+        vm.cargarInmuebles();
         return root;
 
 
-
     }
+
+
+
+
 
 
 

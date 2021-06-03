@@ -28,7 +28,7 @@ import retrofit2.http.Path;
 
 public class ApiClient {
 
-    private static final String PATH="http://192.168.0.19:45459/api/";
+    private static final String PATH="http://192.168.0.19:45455/api/";
     private static  MyApiInterface myApiInteface;
 
     public static MyApiInterface getMyApiClient(){
@@ -66,10 +66,10 @@ public class ApiClient {
         Call<List<Inmueble>> inmueblesPropios(@Header("Authorization") String token);
 
         @GET("inmuebles/id")
-        Call<Inmueble> inmuebleVer(@Header("Authorization") String token,@Body int id);
+        Call<Inmueble> inmuebleVer(@Header("Authorization") String token,@Path("id") int id);
 
         @PUT("Inmuebles/disponible/{id}")
-        Call<Inmueble> disponibilidad(@Header("Authorization") String token,@Body int id);
+        Call<Inmueble> disponibilidad(@Header("Authorization") String token,@Path("id") int id);
 
 
 

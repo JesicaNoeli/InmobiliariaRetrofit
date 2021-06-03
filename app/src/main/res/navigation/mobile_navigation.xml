@@ -40,4 +40,9 @@
         android:name="com.example.tp_final_inmobiliaria.ui.salir.SalirFragment"
         android:label="@string/menu_salir"
         tools:layout="@layout/fragment_salir" />
+    <fragment
+        android:id="@+id/verInmuebleFragment"
+        android:name="com.example.tp_final_inmobiliaria.ui.inmuebles.VerInmuebleFragment"
+        android:label="ver_inmueble_fragment"
+        tools:layout="@layout/ver_inmueble_fragment" />
 </navigation>

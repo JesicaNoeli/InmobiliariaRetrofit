@@ -18,7 +18,7 @@ import com.example.tp_final_inmobiliaria.model.Propietario;
 
 public class InmuebleActivity extends AppCompatActivity {
 
-    private ImageView fotoGrande;
+   /* private ImageView fotoGrande;
     private TextView txtDescripcion;
     private TextView txtDireccion;
    InmueblesViewModel vm;
@@ -61,5 +61,5 @@ public class InmuebleActivity extends AppCompatActivity {
                }else{Toast.makeText(getApplicationContext(),"La propiedad cambio a no disponible",Toast.LENGTH_LONG).show();}
            }
        });
-        }
+        }*/
     }
