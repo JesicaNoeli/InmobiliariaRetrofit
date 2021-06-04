@@ -31,6 +31,7 @@ public class PerfilFragment extends Fragment {
     private TextView textClaveP;
     private Button btnEditar, btnGuardar;
     private PerfilViewModel vm;
+    Propietario prop;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -52,11 +53,11 @@ public class PerfilFragment extends Fragment {
         btnEditar= view.findViewById(R.id.btnEditar);
         btnGuardar=view.findViewById(R.id.btnGuardar);
 
-        editApellidoP.setEnabled(true);
-        editDniP.setEnabled(true);
-        editNombreP.setEnabled(true);
-        editTelefonoP.setEnabled(true);
-        editEmailP.setEnabled(true);
+        editApellidoP.setEnabled(false);
+        editDniP.setEnabled(false);
+        editNombreP.setEnabled(false);
+        editTelefonoP.setEnabled(false);
+        editEmailP.setEnabled(false);
         textClaveP.setVisibility(View.GONE);
         editClaveP.setVisibility(View.GONE);
         btnGuardar.setVisibility(View.GONE);
@@ -72,14 +73,21 @@ public class PerfilFragment extends Fragment {
                 editNombreP.setText(propietario.getNombre());
                 editTelefonoP.setText(propietario.getTelefono());
                 editEmailP.setText(propietario.getEmail());
+                prop= propietario;
+
             }
        });
 
-        vm.cargarPerfil();
+       vm.cargarPerfil();
 
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                editApellidoP.setEnabled(true);
+                editDniP.setEnabled(true);
+                editNombreP.setEnabled(true);
+                editTelefonoP.setEnabled(true);
+                editEmailP.setEnabled(true);
                 textClaveP.setVisibility(View.VISIBLE);
                 editClaveP.setVisibility(View.VISIBLE);
                 btnEditar.setVisibility(View.GONE);
@@ -94,17 +102,22 @@ public class PerfilFragment extends Fragment {
                 Propietario p = new Propietario();
                 p.setNombre(editNombreP.getText().toString());
                 p.setApellido(editApellidoP.getText().toString());
-               // p.setEmail(editEmailP.getText().toString());
+                //p.setEmail(editEmailP.getText().toString());
                 p.setDni(editDniP.getText().toString());
                 p.setTelefono(editTelefonoP.getText().toString());
                 vm.editarPropietario(p);
-                Usuario us = new Usuario();
-                us.setEmail(editEmailP.getText().toString());
-                us.setClave(editClaveP.getText().toString());
-                vm.editarContraseña(us);
+               // if(prop.getEmail()!=editEmailP.getText().toString()||editClaveP.getText()!=null) {
+                    Usuario us = new Usuario();
+                    us.setEmail(editEmailP.getText().toString().trim());
+                    us.setClave(editClaveP.getText().toString().trim());
+                    vm.editarContraseña(us);
+             //   }
 
-
-
+                editApellidoP.setEnabled(false);
+                editDniP.setEnabled(false);
+                editNombreP.setEnabled(false);
+                editTelefonoP.setEnabled(false);
+                editEmailP.setEnabled(false);
                 btnEditar.setVisibility(View.VISIBLE);
                 btnGuardar.setVisibility(View.GONE);
                 textClaveP.setVisibility(View.GONE);

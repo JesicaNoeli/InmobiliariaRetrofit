@@ -28,7 +28,7 @@ import retrofit2.http.Path;
 
 public class ApiClient {
 
-    private static final String PATH="http://192.168.0.19:45455/api/";
+    private static final String PATH="http:///192.168.1.143:45455/api/";
     private static  MyApiInterface myApiInteface;
 
     public static MyApiInterface getMyApiClient(){
@@ -65,17 +65,18 @@ public class ApiClient {
         @GET("inmuebles")
         Call<List<Inmueble>> inmueblesPropios(@Header("Authorization") String token);
 
-        @GET("inmuebles/id")
+        @GET("inmuebles/{id}")
         Call<Inmueble> inmuebleVer(@Header("Authorization") String token,@Path("id") int id);
 
         @PUT("Inmuebles/disponible/{id}")
         Call<Inmueble> disponibilidad(@Header("Authorization") String token,@Path("id") int id);
 
-
-
         //Contratos
+        @GET("Contratos/Vigente")
+        Call<List<Contrato>> obtenerVigentes(@Header("Authorization") String token);
+
         @GET("Contratos/Inmueble/{id}")
-        Call<Contrato> obtenerContratos(@Header("Authorization") String token , @Path("id") int id );
+        Call<List<Contrato>> obtenerContratos(@Header("Authorization") String token , @Path("id") int id );
 
     }
 
@@ -85,20 +86,6 @@ public class ApiClient {
 
     }
 
-
-
-        /*@GET("sites/{site}/categories")
-        Call<List<Categoria>> obtenerCategorias(@Path("site") String sitio);
-
-        //https://api.mercadolibre.com/categories/MLA5725
-        @GET("categories/{categoria}")
-        Call<DetalleCategoria> obtenerDetalleCategoria(@Path("categoria") String cat);
-        //listarClientes.php
-        //@GET("listarClientes.php")
-        //Call<List<Cliente>> getClientes();
-
-        //@GET("insertarClientes.php")
-        //Call<Cliente> createCliente(@Query("dni") int dni, @Query("apellido") String apellido, @Query("nombre") String nombre);*/
     }
 
 

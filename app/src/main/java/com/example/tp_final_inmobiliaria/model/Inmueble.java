@@ -11,17 +11,10 @@ public class Inmueble implements Serializable {
     private String descripcion;
     private String tipo;
     public String  uso;
-    public int CantAmbientes;
-    public Boolean Disponible;
+    public int cantAmbientes;
+    public Boolean disponible;
 
-    public Inmueble(int id, int foto, String direccion, double precio, String descripcion, String tipo) {
-        this.idInm = id;
-        this.foto = foto;
-        this.direccion = direccion;
-        this.costo = precio;
-        this.descripcion = descripcion;
-        this.tipo = tipo;
-    }
+
 
     public Inmueble(int idInm, int idProp, int foto, String direccion, double costo, String descripcion, String tipo, String uso, int cantAmbientes, Boolean disponible) {
         this.idInm = idInm;
@@ -32,34 +25,19 @@ public class Inmueble implements Serializable {
         this.descripcion = descripcion;
         this.tipo = tipo;
         this.uso = uso;
-        CantAmbientes = cantAmbientes;
-        Disponible = disponible;
+        this.cantAmbientes = cantAmbientes;
+        this.disponible = disponible;
     }
 
     public Inmueble() {
     }
 
-    public Inmueble(int id, String direccion, double precio, String tipo) {
-        this.idInm = id;
-        this.direccion = direccion;
-        this.costo = precio;
-        this.tipo = tipo;
-    }
 
-    public Inmueble(int foto, String direccion, double precio, String descripcion, String tipo) {
-        this.foto = foto;
-        this.direccion = direccion;
-        this.costo = precio;
-        this.descripcion = descripcion;
-        this.tipo = tipo;
-    }
 
-    public int getId() {
-        return idInm;
-    }
+    public int getId() { return idInm;}
 
     public void setId(int id) {
-        idInm = id;
+        this.idInm = id;
     }
 
     public String getTipo() {
@@ -102,14 +80,6 @@ public class Inmueble implements Serializable {
         this.costo = precio;
     }
 
-    public int getIdInm() {
-        return idInm;
-    }
-
-    public void setIdInm(int idInm) {
-        this.idInm = idInm;
-    }
-
     public int getIdProp() {
         return idProp;
     }
@@ -135,19 +105,15 @@ public class Inmueble implements Serializable {
     }
 
     public int getCantAmbientes() {
-        return CantAmbientes;
+        return cantAmbientes;
     }
 
     public void setCantAmbientes(int cantAmbientes) {
-        CantAmbientes = cantAmbientes;
+        this.cantAmbientes = cantAmbientes;
     }
 
-    public Boolean getDisponible() {
-        return Disponible;
-    }
+    public Boolean getDisponible() { return disponible; }
 
-    public void setDisponible(Boolean disponible) {
-        Disponible = disponible;
-    }
+    public void setDisponible(Boolean disponible) { this.disponible = disponible; }
 }
 

@@ -1,5 +1,6 @@
 package com.example.tp_final_inmobiliaria.ui.contratos;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,10 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.tp_final_inmobiliaria.ui.NavigationActivity;
 import com.example.tp_final_inmobiliaria.R;
 import com.example.tp_final_inmobiliaria.model.Contrato;
+import com.example.tp_final_inmobiliaria.ui.inmuebles.InmueblesViewModel;
 
 
 import java.util.ArrayList;
@@ -23,20 +27,36 @@ public class ContratosFragment extends Fragment {
     private ContratoAdapter adapter;
     private List<String> inmueblesList;
     private HashMap<String,List<Contrato>> contList;
+    Context context;
+   ContratosViewModel cvm;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_contratos, container, false);
-        elv= view.findViewById(R.id.listContrato);
-        cargarDatos();
-        adapter = new ContratoAdapter(getActivity(),inmueblesList,contList);
-        elv.setAdapter(adapter);
+        cvm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(ContratosViewModel.class);
+        View root =inflater.inflate(R.layout.fragment_contratos, container, false);
+        context = root.getContext();
+        elv= root.findViewById(R.id.listContrato);
+       //cargarDatos();
         ((NavigationActivity) getActivity()).getSupportActionBar().setTitle("Contratos");
-        return view;
+
+        cvm.getContratos().observe(getViewLifecycleOwner(), new Observer<List<Contrato>>() {
+            @Override
+            public void onChanged(List<Contrato> contratoes) {
+                adapter = new ContratoAdapter(getActivity(),inmueblesList,contList);
+                elv.setAdapter(adapter);
+
+            }
+        });
+        cvm.contratosVigentes();
+        return root;
+
+        }
+
+
     }
 
-    private  void cargarDatos() {
+   /* private  void cargarDatos() {
         inmueblesList = new ArrayList<>();
         contList = new HashMap<>();
 
@@ -57,5 +77,4 @@ public class ContratosFragment extends Fragment {
         contList.put(inmueblesList.get(2),Buenos_Aires_23);
 
 
-    }
-}
+    }*/

@@ -16,21 +16,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars[3]" />
-
     <TextView
-        android:id="@+id/textDescripcion"
+        android:id="@+id/viewAmbientes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/textview3"
+        android:background="@android:color/darker_gray"
+        android:text="@string/cantidad_de_ambientes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fotoGrande" />
+        app:layout_constraintTop_toBottomOf="@+id/textTipo" />
+
+    <TextView
+        android:id="@+id/textAmbientes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewAmbientes" />
 
     <TextView
         android:id="@+id/textTipo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/textInquilino"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTipo" />
 
@@ -48,7 +55,6 @@
         android:id="@+id/textDireccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Direccion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDireccion" />
 
@@ -59,13 +65,12 @@
         android:text="@string/direccion2"
         android:background="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTipo" />
+        app:layout_constraintTop_toBottomOf="@+id/textAmbientes" />
 
     <TextView
         android:id="@+id/textPrecio1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/precio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPrecio" />
 
@@ -76,7 +81,7 @@
         android:background="@android:color/darker_gray"
         android:text="@string/tipo2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textDescripcion" />
+        app:layout_constraintTop_toBottomOf="@+id/fotoGrande" />
 
     <TextView
         android:id="@+id/tvPrecio"
@@ -86,4 +91,20 @@
         android:background="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="@+id/textDireccion"
         app:layout_constraintTop_toBottomOf="@+id/textDireccion" />
+
+    <TextView
+        android:id="@+id/viewUso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:text="Uso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPrecio1" />
+
+    <TextView
+        android:id="@+id/textUso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewUso" />
 </androidx.constraintlayout.widget.ConstraintLayout>

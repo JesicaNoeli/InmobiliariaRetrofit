@@ -44,7 +44,6 @@ public class InmueblesFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_inmueble, container, false);
         context = root.getContext();
 
-
         final ListView lv = root.findViewById(R.id.listInmuebles);
 
         vm.getInmuebles().observe(getViewLifecycleOwner(), new Observer<List>() {

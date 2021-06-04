@@ -23,7 +23,7 @@ import retrofit2.Response;
 public class PerfilViewModel extends AndroidViewModel {
 
     private MutableLiveData<Propietario> propietario;
-    private MutableLiveData<Usuario> usuario;
+    //private MutableLiveData<Usuario> usuario;
     private Context context;
 
 
@@ -39,12 +39,12 @@ public class PerfilViewModel extends AndroidViewModel {
         return propietario;
     }
 
-    public LiveData<Usuario> getUsuario() {
+   /* public LiveData<Usuario> getUsuario() {
         if(usuario== null){
             usuario= new MutableLiveData<>();
         }
         return usuario;
-    }
+    }*/
     public void cargarPerfil(){
         Call<Propietario>obtenerPropietario = ApiClient.getMyApiClient().propietarioActual(ApiClient.obtenerToken(context));
         obtenerPropietario.enqueue(new Callback<Propietario>() {
@@ -72,8 +72,7 @@ public class PerfilViewModel extends AndroidViewModel {
             public void onResponse(Call<Propietario> call, Response<Propietario> response) {
                 if(response.isSuccessful()){
                     propietario.setValue(response.body());
-                    Log.d("Token", "estas en el edit");
-                    Toast.makeText(context, "Datos guardados", Toast.LENGTH_LONG).show();
+                     Toast.makeText(context, "Datos guardados", Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(context, "usuario no encontrado", Toast.LENGTH_LONG).show();
                 }
@@ -82,7 +81,7 @@ public class PerfilViewModel extends AndroidViewModel {
             @Override
             public void onFailure(Call<Propietario> call, Throwable t) {
                 Toast.makeText(context, "ocurrio un error", Toast.LENGTH_LONG).show();
-                Log.d("Token", "error de edit "+t.getMessage());
+
 
             }
         });
@@ -94,9 +93,10 @@ public class PerfilViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if(response.isSuccessful()){
-                    usuario.setValue(response.body());
+                    Log.d("Usuario", "listo ");
+                    //usuario.setValue(response.body());
                 }else{
-                    Toast.makeText(context, "usuario no encontrado", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "usuario no editado", Toast.LENGTH_LONG).show();
                 }
             }
 

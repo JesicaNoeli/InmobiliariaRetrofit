@@ -34,7 +34,6 @@ public class VerInmuebleViewModel extends AndroidViewModel {
     }
     public void verInmueble(int id){
         Call<Inmueble> verInmueble = ApiClient.getMyApiClient().inmuebleVer(ApiClient.obtenerToken(context), id);
-        Log.d("Token", "no se"+id);
         verInmueble.enqueue(new Callback<Inmueble>() {
             @Override
             public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {

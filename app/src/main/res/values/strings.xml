@@ -72,4 +72,5 @@
     <string name="email3">Email:</string>
     <string name="admin_admin_com">admin@admin.com</string>
     <string name="editar">Editar</string>
+    <string name="cantidad_de_ambientes">Cantidad de ambientes</string>
 </resources>

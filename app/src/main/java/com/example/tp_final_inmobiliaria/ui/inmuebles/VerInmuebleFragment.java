@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,13 +24,10 @@ import com.example.tp_final_inmobiliaria.ui.NavigationActivity;
 
 public class VerInmuebleFragment extends Fragment {
     private ImageView fotoGrande;
-    private TextView txtDescripcion;
-    private TextView txtDireccion;
-    private TextView txtPrecio;
-    private TextView txtTipo;
+    private TextView txtAmbientes, txtDireccion, txtPrecio, txtTipo, txtUso;
     private Switch disponible;
     private VerInmuebleViewModel ivm;
-    private Inmueble inmueble;
+    private Inmueble inmue;
 
     /*public static VerInmuebleFragment newInstance() {
         return new VerInmuebleFragment();
@@ -47,10 +45,13 @@ public class VerInmuebleFragment extends Fragment {
             public void onChanged(Inmueble inmueble) {
 
                 //fotoGrande.setImageResource(inmueble.getFoto());
-                // txtDescripcion.setText(inmueble.getDescripcion());
+                txtAmbientes.setText(inmueble.getCantAmbientes()+"");
                 txtPrecio.setText(inmueble.getPrecio() + "");
                 txtDireccion.setText(inmueble.getDireccion());
                 txtTipo.setText(inmueble.getTipo());
+                txtUso.setText(inmueble.getUso());
+                inmue = inmueble;
+
                 if (inmueble.getDisponible()) {
                     disponible.setChecked(true);
                 }
@@ -61,16 +62,19 @@ public class VerInmuebleFragment extends Fragment {
     }
     private void inicializar(View view) {
         fotoGrande=view.findViewById(R.id.fotoGrande);
-        txtDescripcion=view.findViewById(R.id.textDescripcion);
+        txtAmbientes=view.findViewById(R.id.textAmbientes);
         txtDireccion=view.findViewById(R.id.textDireccion);
         txtPrecio=view.findViewById(R.id.textPrecio1);
         txtTipo=view.findViewById(R.id.textTipo);
+        txtUso=view.findViewById(R.id.textUso);
         disponible=view.findViewById(R.id.switchDisponible);
+
         ((NavigationActivity) getActivity()).getSupportActionBar().setTitle("Propiedad");
         disponible.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ivm.disponibilidad(inmueble.getId());
+               // Log.d("Token", "disponible"+ inmue.getId());
+               ivm.disponibilidad(inmue.getId());
                 if(disponible.isChecked()){
                     Toast.makeText(getContext(),"La propiedad cambio a disponible",Toast.LENGTH_LONG).show();
                 }else{Toast.makeText(getContext(),"La propiedad cambio a no disponible",Toast.LENGTH_LONG).show();}

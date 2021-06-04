@@ -51,7 +51,7 @@ public class InmuebleAdapter extends ArrayAdapter<Inmueble> {
         direccion.setText(inmueble.getDireccion());
 
         TextView precio=itemView.findViewById(R.id.precio);
-        precio.setText(inmueble.getPrecio()+"");
+        precio.setText(inmueble.getTipo());
 
 
 
