@@ -2,6 +2,7 @@ package com.example.tp_final_inmobiliaria.ui.contratos;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,6 +42,7 @@ public class ContratosViewModel extends AndroidViewModel {
         vigentes.enqueue(new Callback<List<Contrato>>() {
             @Override
             public void onResponse(Call<List<Contrato>> call, Response<List<Contrato>> response) {
+                Log.d("Token", "entro");
                 if(response.isSuccessful()){
                     contratos.postValue(response.body());
                 }else{

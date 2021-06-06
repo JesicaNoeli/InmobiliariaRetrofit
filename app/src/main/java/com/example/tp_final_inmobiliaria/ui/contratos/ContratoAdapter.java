@@ -1,14 +1,17 @@
 package com.example.tp_final_inmobiliaria.ui.contratos;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import com.example.tp_final_inmobiliaria.R;
 import com.example.tp_final_inmobiliaria.model.Contrato;
+import com.example.tp_final_inmobiliaria.model.Inmueble;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +19,9 @@ import java.util.List;
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 public class ContratoAdapter extends BaseExpandableListAdapter {
+
+    private List<Contrato> lista;
+    private LayoutInflater li;
     private Context context;
     private List<String> propiedades;
     private HashMap<String, List<Contrato>> listHashMap;
@@ -84,10 +90,12 @@ public class ContratoAdapter extends BaseExpandableListAdapter {
         TextView editPrecio = view.findViewById(R.id.editPrecio);
         TextView editFinal= view.findViewById(R.id.editFinalizacion);
         TextView editInicio = view.findViewById(R.id.editInicio);
+        TextView editInq = view.findViewById(R.id.editInq);
 
         editInicio .setText(cont.getFechaInicio());
-        editFinal.setText(cont.getFechaFinalizacion());
-        editPrecio .setText(cont.getPrecio()+"");
+        editFinal.setText(cont.getfechaCierre());
+        editPrecio.setText(cont.getMonto()+"");
+        editInq.setText(cont.getInquilino().getNombre()+" "+cont.getInquilino().getApellido());
 
         return view;
     }
@@ -96,6 +104,7 @@ public class ContratoAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
+
 }
 
 

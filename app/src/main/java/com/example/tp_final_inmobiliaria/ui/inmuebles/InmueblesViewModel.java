@@ -20,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class InmueblesViewModel extends AndroidViewModel {
+public class  InmueblesViewModel extends AndroidViewModel {
     private MutableLiveData<List<Inmueble>> inmuebles;
     private Context context;
 

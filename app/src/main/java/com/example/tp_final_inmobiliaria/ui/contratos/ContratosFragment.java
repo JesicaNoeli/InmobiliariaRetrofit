@@ -2,18 +2,26 @@ package com.example.tp_final_inmobiliaria.ui.contratos;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
+import com.example.tp_final_inmobiliaria.model.Inmueble;
 import com.example.tp_final_inmobiliaria.ui.NavigationActivity;
 import com.example.tp_final_inmobiliaria.R;
 import com.example.tp_final_inmobiliaria.model.Contrato;
+import com.example.tp_final_inmobiliaria.ui.inmuebles.InmuebleAdapter;
 import com.example.tp_final_inmobiliaria.ui.inmuebles.InmueblesViewModel;
 
 
@@ -24,15 +32,18 @@ import java.util.List;
 public class ContratosFragment extends Fragment {
 
     private ExpandableListView elv;
-    private ContratoAdapter adapter;
+    ContratoAdapter adapter;
     private List<String> inmueblesList;
     private HashMap<String,List<Contrato>> contList;
     Context context;
-   ContratosViewModel cvm;
+    ContratosViewModel cvm;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        inmueblesList = new ArrayList<>();
+        contList = new HashMap<>();
+
         cvm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(ContratosViewModel.class);
         View root =inflater.inflate(R.layout.fragment_contratos, container, false);
         context = root.getContext();
@@ -42,17 +53,28 @@ public class ContratosFragment extends Fragment {
 
         cvm.getContratos().observe(getViewLifecycleOwner(), new Observer<List<Contrato>>() {
             @Override
-            public void onChanged(List<Contrato> contratoes) {
-                adapter = new ContratoAdapter(getActivity(),inmueblesList,contList);
+            public void onChanged( final List<Contrato> contratoes) {
+
+                for (int i=0; i< contratoes.size(); i++) {
+                    List<Contrato>con = new ArrayList<>();
+                    con.add(new Contrato(contratoes.get(i).getFechaInicio(),contratoes.get(i).getFechaInicio(),contratoes.get(i).getMonto(),contratoes.get(i).getInquilino()));
+                    inmueblesList.add(contratoes.get(i).getInmueble().getDireccion());
+                    contList.put(inmueblesList.get(i).toString(),con);
+                }
+
+                adapter = new ContratoAdapter(getContext(), inmueblesList,contList);
                 elv.setAdapter(adapter);
+
 
             }
         });
+
+
         cvm.contratosVigentes();
+
         return root;
 
-        }
-
+    }
 
     }
 

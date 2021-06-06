@@ -73,4 +73,5 @@
     <string name="admin_admin_com">admin@admin.com</string>
     <string name="editar">Editar</string>
     <string name="cantidad_de_ambientes">Cantidad de ambientes</string>
+    <string name="inquilino">Inquilino</string>
 </resources>
