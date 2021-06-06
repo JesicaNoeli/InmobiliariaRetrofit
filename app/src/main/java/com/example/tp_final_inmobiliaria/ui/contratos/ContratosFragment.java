@@ -57,7 +57,7 @@ public class ContratosFragment extends Fragment {
 
                 for (int i=0; i< contratoes.size(); i++) {
                     List<Contrato>con = new ArrayList<>();
-                    con.add(new Contrato(contratoes.get(i).getFechaInicio(),contratoes.get(i).getFechaInicio(),contratoes.get(i).getMonto(),contratoes.get(i).getInquilino()));
+                    con.add(new Contrato(contratoes.get(i).getFechaInicio(),contratoes.get(i).getFechaCierre(),contratoes.get(i).getMonto(),contratoes.get(i).getInquilino()));
                     inmueblesList.add(contratoes.get(i).getInmueble().getDireccion());
                     contList.put(inmueblesList.get(i).toString(),con);
                 }

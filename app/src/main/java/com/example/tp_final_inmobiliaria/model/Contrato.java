@@ -1,20 +1,23 @@
 package com.example.tp_final_inmobiliaria.model;
 
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 public class Contrato {
     private int idCon;
-    private String fechaInicio;
-    private String fechaCierre;
+    private Date fechaInicio;
+    private Date fechaCierre;
     private double monto;
     private Inmueble inmueble;
     private Inquilino inquilino;
 
-    public Contrato(String fechaInicio, String fechaCierre, double monto) {
+    public Contrato(Date fechaInicio, Date fechaCierre, double monto) {
         this.fechaInicio = fechaInicio;
         this.fechaCierre = fechaCierre;
         this.monto = monto;
     }
 
-    public Contrato(String fechaInicio, String fechaCierre, double monto, Inmueble inmueble, Inquilino inquilino) {
+    public Contrato(Date fechaInicio, Date fechaCierre, double monto, Inmueble inmueble, Inquilino inquilino) {
         this.fechaInicio = fechaInicio;
         this.fechaCierre = fechaCierre;
         this.monto = monto;
@@ -22,7 +25,7 @@ public class Contrato {
         this.inquilino = inquilino;
     }
 
-    public Contrato(int idCon, String fechaInicio, String fechaCierre, double monto, Inmueble inmueble, Inquilino inquilino) {
+    public Contrato(int idCon, Date fechaInicio, Date fechaCierre, double monto, Inmueble inmueble, Inquilino inquilino) {
         this.idCon = idCon;
         this.fechaInicio = fechaInicio;
         this.fechaCierre = fechaCierre;
@@ -34,7 +37,7 @@ public class Contrato {
     public Contrato() {
     }
 
-    public Contrato(String fechaInicio, String fechaCierre, double monto, Inquilino inquilino) {
+    public Contrato(Date fechaInicio, Date fechaCierre, double monto, Inquilino inquilino) {
         this.fechaInicio = fechaInicio;
         this.fechaCierre = fechaCierre;
         this.monto = monto;
@@ -49,11 +52,11 @@ public class Contrato {
         this.idCon = idCon;
     }
 
-    public String getFechaCierre() {
+    public Date getFechaCierre() {
         return fechaCierre;
     }
 
-    public void setFechaCierre(String fechaCierre) {
+    public void setFechaCierre(Date fechaCierre) {
         this.fechaCierre = fechaCierre;
     }
 
@@ -81,15 +84,15 @@ public class Contrato {
         this.inquilino = inquilino;
     }
 
-    public String getFechaInicio() {
+    public Date getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(String fechaInicio) {
+    public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public String getfechaCierre() {
+    public Date getfechaCierre() {
         return fechaCierre;
     }
 

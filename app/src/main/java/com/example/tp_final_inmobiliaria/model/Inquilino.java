@@ -4,15 +4,33 @@ public class Inquilino {
     private String dni;
     private String apellido;
     private String nombre;
-    private String direccion;
+    private Inmueble inmueble;
+    private String direccionTrabajo;
     private String telefono;
 
-    public Inquilino(String dni, String apellido, String nombre, String direccion, String telefono) {
+    public Inquilino(String dni, String apellido, String nombre, Inmueble inmueble, String telefono) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
-        this.direccion = direccion;
+        this.inmueble = inmueble;
         this.telefono = telefono;
+    }
+
+    public Inquilino(String dni, String apellido, String nombre, Inmueble inmueble, String direccionTrabajo, String telefono) {
+        this.dni = dni;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.inmueble = inmueble;
+        this.direccionTrabajo = direccionTrabajo;
+        this.telefono = telefono;
+    }
+
+    public String getDireccionTrabajo() {
+        return direccionTrabajo;
+    }
+
+    public void setDireccionTrabajo(String direccionTrabajo) {
+        this.direccionTrabajo = direccionTrabajo;
     }
 
     public String getDni() {
@@ -39,12 +57,12 @@ public class Inquilino {
         this.nombre = nombre;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public Inmueble getInmueble() {
+        return inmueble;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setInmueble(Inmueble inmueble) {
+        this.inmueble = inmueble;
     }
 
     public String getTelefono() {

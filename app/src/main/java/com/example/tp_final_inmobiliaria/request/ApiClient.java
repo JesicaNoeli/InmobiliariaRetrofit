@@ -75,8 +75,9 @@ public class ApiClient {
         @GET("Contratos/Vigente")
         Call<List<Contrato>> obtenerVigentes(@Header("Authorization") String token);
 
-        @GET("Contratos/Inmueble/{id}")
-        Call<List<Contrato>> obtenerContratos(@Header("Authorization") String token , @Path("id") int id );
+        //Inquiinos actuales
+        @GET("inquilinos")
+        Call<List<Contrato>> obtenerInquilinos(@Header("Authorization") String token );
 
     }
 

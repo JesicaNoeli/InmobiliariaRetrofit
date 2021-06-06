@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.tp_final_inmobiliaria.R;
 import com.example.tp_final_inmobiliaria.model.Inmueble;
 
@@ -45,7 +47,13 @@ public class InmuebleAdapter extends ArrayAdapter<Inmueble> {
         Inmueble inmueble =lista.get(position);
 
         ImageView foto=itemView.findViewById(R.id.foto);
-        foto.setImageResource(inmueble.getFoto());
+        //foto.setImageResource(inmueble.getFoto());
+        Glide.with(getContext())
+                .load(inmueble.getFoto())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(foto);
+
 
         TextView direccion=itemView.findViewById(R.id.direccion);
         direccion.setText(inmueble.getDireccion());

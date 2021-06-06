@@ -13,6 +13,7 @@ import com.example.tp_final_inmobiliaria.R;
 import com.example.tp_final_inmobiliaria.model.Contrato;
 import com.example.tp_final_inmobiliaria.model.Inmueble;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 
@@ -92,8 +93,9 @@ public class ContratoAdapter extends BaseExpandableListAdapter {
         TextView editInicio = view.findViewById(R.id.editInicio);
         TextView editInq = view.findViewById(R.id.editInq);
 
-        editInicio .setText(cont.getFechaInicio());
-        editFinal.setText(cont.getfechaCierre());
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        editInicio.setText(formatter.format(cont.getFechaInicio()));
+        editFinal.setText(formatter.format(cont.getfechaCierre()));
         editPrecio.setText(cont.getMonto()+"");
         editInq.setText(cont.getInquilino().getNombre()+" "+cont.getInquilino().getApellido());
 

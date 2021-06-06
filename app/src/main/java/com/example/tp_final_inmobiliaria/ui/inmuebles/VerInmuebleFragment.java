@@ -18,6 +18,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.tp_final_inmobiliaria.R;
 import com.example.tp_final_inmobiliaria.model.Inmueble;
 import com.example.tp_final_inmobiliaria.ui.NavigationActivity;
@@ -55,8 +57,18 @@ public class VerInmuebleFragment extends Fragment {
                 if (inmueble.getDisponible()) {
                     disponible.setChecked(true);
                 }
+
+                Glide.with(getContext())
+                        .load(inmueble.getFoto())
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.drawable.ic_launcher_background)
+                        .into(fotoGrande);
+
             }
         });
+
+
+
         ivm.verInmueble(id);
         return root;
     }
@@ -69,6 +81,8 @@ public class VerInmuebleFragment extends Fragment {
         txtUso=view.findViewById(R.id.textUso);
         disponible=view.findViewById(R.id.switchDisponible);
 
+
+
         ((NavigationActivity) getActivity()).getSupportActionBar().setTitle("Propiedad");
         disponible.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +94,7 @@ public class VerInmuebleFragment extends Fragment {
                 }else{Toast.makeText(getContext(),"La propiedad cambio a no disponible",Toast.LENGTH_LONG).show();}
             }
         });
+
     }
 
     }
