@@ -85,13 +85,13 @@ class PagoAdapter extends BaseExpandableListAdapter {
         TextView editImporte = view.findViewById(R.id.editImporte);
         TextView editFechaP= view.findViewById(R.id.editFecha);
         TextView editPago = view.findViewById(R.id.editPago);
-        TextView editId = view.findViewById(R.id.editId);
+
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         editPago.setText(pago.getNumPago()+"");
         editFechaP.setText(formatter.format(pago.getFechaPago()));
         editImporte.setText(pago.getImporte()+"");
-        editId.setText(pago.getIdPago()+"");
+
 
         return view;
     }

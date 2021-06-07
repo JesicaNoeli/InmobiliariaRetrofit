@@ -59,8 +59,7 @@ public class VerInmuebleFragment extends Fragment {
                 }
 
                 Glide.with(getContext())
-                        .load(inmueble.getFoto())
-
+                        .load(("http://192.168.1.143:45457/Uploads/"+inmueble.getFoto()).trim())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .placeholder(R.drawable.ic_launcher_background)
                         .into(fotoGrande);

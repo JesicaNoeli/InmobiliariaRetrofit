@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Inmueble implements Serializable {
     private int idInm;
     private int idProp;
-    private int foto;
+    private String foto;
     private String direccion;
     private double costo;
     private String descripcion;
@@ -16,7 +16,7 @@ public class Inmueble implements Serializable {
 
 
 
-    public Inmueble(int idInm, int idProp, int foto, String direccion, double costo, String descripcion, String tipo, String uso, int cantAmbientes, Boolean disponible) {
+    public Inmueble(int idInm, int idProp, String foto, String direccion, double costo, String descripcion, String tipo, String uso, int cantAmbientes, Boolean disponible) {
         this.idInm = idInm;
         this.idProp = idProp;
         this.foto = foto;
@@ -56,11 +56,11 @@ public class Inmueble implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public int getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(int foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 

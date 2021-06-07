@@ -29,7 +29,7 @@ import retrofit2.http.Path;
 
 public class ApiClient {
 
-    private static final String PATH="http:///192.168.1.143:45455/api/";
+    private static final String PATH="http://192.168.1.143:45457/api/";
     private static  MyApiInterface myApiInteface;
 
     public static MyApiInterface getMyApiClient(){

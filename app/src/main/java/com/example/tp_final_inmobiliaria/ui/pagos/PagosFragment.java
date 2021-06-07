@@ -52,8 +52,8 @@ public class PagosFragment extends Fragment {
                     List<Pago>p = new ArrayList<>();
                     Log.d("Pago", pagos.get(i).getIdPago()+" ");
 
-                     p.add(new Pago(pagos.get(i).getIdPago(),pagos.get(i).getNumPago(),pagos.get(i).getFechaPago(),pagos.get(i).getImporte()));
-                    inmueblesList.add(pagos.get(i).getContrato().getInmueble().getDireccion());
+                     p.add(new Pago(pagos.get(i).getNumPago(),pagos.get(i).getFechaPago(),pagos.get(i).getImporte()));
+                    inmueblesList.add(pagos.get(i).getContrato().getInmueble().getDireccion()+" #"+pagos.get(i).getIdPago());
                     pagoList.put(inmueblesList.get(i).toString(),p);
                 }
                 adapter = new PagoAdapter(getActivity(),inmueblesList,pagoList);

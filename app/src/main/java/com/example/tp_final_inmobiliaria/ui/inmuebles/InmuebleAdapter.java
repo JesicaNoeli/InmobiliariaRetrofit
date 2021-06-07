@@ -17,6 +17,7 @@ import com.example.tp_final_inmobiliaria.R;
 import com.example.tp_final_inmobiliaria.model.Inmueble;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class InmuebleAdapter extends ArrayAdapter<Inmueble> {
 
@@ -48,8 +49,9 @@ public class InmuebleAdapter extends ArrayAdapter<Inmueble> {
 
         ImageView foto=itemView.findViewById(R.id.foto);
         //foto.setImageResource(inmueble.getFoto());
+        ;
         Glide.with(getContext())
-                .load(inmueble.getFoto())
+          .load(("http://192.168.1.143:45457/Uploads/"+inmueble.getFoto()).trim())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(foto);
