@@ -60,6 +60,7 @@ public class VerInmuebleFragment extends Fragment {
 
                 Glide.with(getContext())
                         .load(inmueble.getFoto())
+
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .placeholder(R.drawable.ic_launcher_background)
                         .into(fotoGrande);

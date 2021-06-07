@@ -23,6 +23,7 @@ import retrofit2.Response;
 public class PerfilViewModel extends AndroidViewModel {
 
     private MutableLiveData<Propietario> propietario;
+    private MutableLiveData<String> msj;
     //private MutableLiveData<Usuario> usuario;
     private Context context;
 
@@ -39,12 +40,12 @@ public class PerfilViewModel extends AndroidViewModel {
         return propietario;
     }
 
-   /* public LiveData<Usuario> getUsuario() {
-        if(usuario== null){
-            usuario= new MutableLiveData<>();
+    public LiveData<String> getMsj() {
+        if(msj == null){
+            msj = new MutableLiveData<>();
         }
-        return usuario;
-    }*/
+        return  msj;
+    }
     public void cargarPerfil(){
         Call<Propietario>obtenerPropietario = ApiClient.getMyApiClient().propietarioActual(ApiClient.obtenerToken(context));
         obtenerPropietario.enqueue(new Callback<Propietario>() {
@@ -94,7 +95,7 @@ public class PerfilViewModel extends AndroidViewModel {
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if(response.isSuccessful()){
                     Log.d("Usuario", "listo ");
-                    //usuario.setValue(response.body());
+                   // msj.setValue("Datos de usuario cambiados, veuelva a iniciar sesion");
                 }else{
                     Toast.makeText(context, "usuario no editado", Toast.LENGTH_LONG).show();
                 }

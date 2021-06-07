@@ -7,6 +7,7 @@ import android.util.Log;
 import com.example.tp_final_inmobiliaria.model.Contrato;
 import com.example.tp_final_inmobiliaria.model.Inmueble;
 import com.example.tp_final_inmobiliaria.model.Inquilino;
+import com.example.tp_final_inmobiliaria.model.Pago;
 import com.example.tp_final_inmobiliaria.model.Propietario;
 import com.example.tp_final_inmobiliaria.model.Usuario;
 import com.google.gson.Gson;
@@ -28,7 +29,7 @@ import retrofit2.http.Path;
 
 public class ApiClient {
 
-    private static final String PATH="http:///192.168.1.143:45457/api/";
+    private static final String PATH="http:///192.168.1.143:45455/api/";
     private static  MyApiInterface myApiInteface;
 
     public static MyApiInterface getMyApiClient(){
@@ -78,6 +79,11 @@ public class ApiClient {
         //Inquiinos actuales
         @GET("inquilinos")
         Call<List<Contrato>> obtenerInquilinos(@Header("Authorization") String token );
+
+        //Pagos
+        @GET("pagos")
+        Call<List<Pago>>pagosRecibidos(@Header("Authorization") String token);
+
 
     }
 

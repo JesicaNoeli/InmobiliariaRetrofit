@@ -1,6 +1,5 @@
 package com.example.tp_final_inmobiliaria.ui.perfil;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -23,6 +23,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.tp_final_inmobiliaria.R;
 import com.example.tp_final_inmobiliaria.model.Propietario;
 import com.example.tp_final_inmobiliaria.model.Usuario;
+import com.example.tp_final_inmobiliaria.ui.MainActivity;
 import com.example.tp_final_inmobiliaria.ui.NavigationActivity;
 
 public class PerfilFragment extends Fragment {
@@ -79,6 +80,7 @@ public class PerfilFragment extends Fragment {
        });
 
        vm.cargarPerfil();
+       // String auxMail = prop.getEmail();
 
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,12 +108,31 @@ public class PerfilFragment extends Fragment {
                 p.setDni(editDniP.getText().toString());
                 p.setTelefono(editTelefonoP.getText().toString());
                 vm.editarPropietario(p);
-               // if(prop.getEmail()!=editEmailP.getText().toString()||editClaveP.getText()!=null) {
-                    Usuario us = new Usuario();
+
+                    final Usuario us = new Usuario();
                     us.setEmail(editEmailP.getText().toString().trim());
                     us.setClave(editClaveP.getText().toString().trim());
                     vm.editarContraseña(us);
-             //   }
+
+                   /* vm.getMsj().observe(getViewLifecycleOwner(), new Observer<String>() {
+                        @Override
+                        public void onChanged(String mensaje) {
+
+                            new AlertDialog.Builder(getContext())
+                                    .setTitle("Advertencia")
+                                    .setMessage(mensaje)
+                                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            vm.editarContraseña(us);
+                                            System.exit(0);
+
+                                        }
+                                    }).show();
+                        }
+                    });*/
+
+
 
                 editApellidoP.setEnabled(false);
                 editDniP.setEnabled(false);
@@ -127,6 +148,7 @@ public class PerfilFragment extends Fragment {
             }
         });
         vm.cargarPerfil();
+
     }
     /*public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

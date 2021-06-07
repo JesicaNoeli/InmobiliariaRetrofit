@@ -1,16 +1,23 @@
 package com.example.tp_final_inmobiliaria.ui.pagos;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.example.tp_final_inmobiliaria.model.Contrato;
 import com.example.tp_final_inmobiliaria.ui.NavigationActivity;
 import com.example.tp_final_inmobiliaria.R;
 import com.example.tp_final_inmobiliaria.model.Pago;
+import com.example.tp_final_inmobiliaria.ui.contratos.ContratoAdapter;
+import com.example.tp_final_inmobiliaria.ui.contratos.ContratosViewModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,26 +25,47 @@ import java.util.List;
 
 public class PagosFragment extends Fragment {
 
-    private PagosViewModel PagosViewModel;
-
     private ExpandableListView elv;
     private PagoAdapter adapter;
     private List<String> inmueblesList;
     private HashMap<String,List<Pago> >pagoList;
+    Context context;
+    PagosViewModel cvm;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_pagos, container, false);
-        elv= view.findViewById(R.id.listPago);
-        cargarDatos();
-        adapter = new PagoAdapter(getActivity(),inmueblesList,pagoList);
-        elv.setAdapter(adapter);
+        inmueblesList = new ArrayList<>();
+        pagoList = new HashMap<>();
+
+        cvm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(PagosViewModel.class);
+        View root =inflater.inflate(R.layout.fragment_pagos, container, false);
+        context = root.getContext();
+        elv= root.findViewById(R.id.listPago);
         ((NavigationActivity) getActivity()).getSupportActionBar().setTitle("Pagos");
-        return view;
+        //cargarDatos();
+
+        cvm.getPagos().observe(getViewLifecycleOwner(), new Observer<List<Pago>>() {
+            @Override
+            public void onChanged(final List<Pago> pagos) {
+                for (int i=0; i< pagos.size(); i++) {
+                    List<Pago>p = new ArrayList<>();
+                    Log.d("Pago", pagos.get(i).getIdPago()+" ");
+
+                     p.add(new Pago(pagos.get(i).getIdPago(),pagos.get(i).getNumPago(),pagos.get(i).getFechaPago(),pagos.get(i).getImporte()));
+                    inmueblesList.add(pagos.get(i).getContrato().getInmueble().getDireccion());
+                    pagoList.put(inmueblesList.get(i).toString(),p);
+                }
+                adapter = new PagoAdapter(getActivity(),inmueblesList,pagoList);
+                elv.setAdapter(adapter);
+            }
+        });
+
+        cvm.cargarPagos();
+        return root;
     }
 
-    private  void cargarDatos() {
+   /* private  void cargarDatos() {
         inmueblesList = new ArrayList<>();
         pagoList = new HashMap<>();
 
@@ -64,6 +92,6 @@ public class PagosFragment extends Fragment {
         pagoList.put(inmueblesList.get(2),Buenos_Aires_23);
 
 
-    }
+    }*/
 
 }

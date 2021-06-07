@@ -52,6 +52,7 @@ public class  InmueblesViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(Call<List<Inmueble>>call, Throwable t) {
+                Log.d("Token", "salida incorrecta "+t.getMessage());
                 Toast.makeText(context, "ocurrio un error", Toast.LENGTH_LONG).show();
 
             }

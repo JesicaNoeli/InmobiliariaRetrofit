@@ -13,10 +13,12 @@ import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.tp_final_inmobiliaria.ui.NavigationActivity;
 import com.example.tp_final_inmobiliaria.R;
+import com.example.tp_final_inmobiliaria.ui.contratos.ContratosViewModel;
 
 public class SalirFragment extends Fragment {
 
@@ -24,11 +26,11 @@ public class SalirFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        sendViewModel =
-                ViewModelProviders.of(this).get(SalirViewModel.class);
+        sendViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(SalirViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_salir, container, false);
         final TextView textView = root.findViewById(R.id.text_salir);
-        sendViewModel.getText().observe(this, new Observer<String>() {
+        sendViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
